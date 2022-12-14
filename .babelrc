@@ -1,0 +1,7 @@
+{
+//configuration of the presets installed
+"presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+ ]
+}
