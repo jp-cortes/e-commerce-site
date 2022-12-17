@@ -14,6 +14,15 @@ module.exports = {
     mode: 'development',
     resolve: {
         extensions: ['.js', '.jsx'],
+        alias: {
+            '@pages': Path.resolve(__dirname, 'src/pages/'),
+            '@components': Path.resolve(__dirname, 'src/components/'),
+            '@containers': Path.resolve(__dirname, 'src/containers/'),
+            '@styles': Path.resolve(__dirname, 'src/styles/'),
+            '@icons': Path.resolve(__dirname, 'src/assets/Icons/'),
+            '@logos': Path.resolve(__dirname, 'src/assets/Logos/'),
+            '@hooks': Path.resolve(__dirname, 'src/hooks/'),
+        }
     },
     module: {
         rules: [
@@ -21,7 +30,17 @@ module.exports = {
                 test:/\.(js|jsx)$/,
                 exclude: /node_modules/,//files i want  to exclude
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    // options: {
+                    //     presets: [
+                    //         [
+                    //             '@babel/presets-react',
+                    //             {
+                    //                 runtime: 'automatic'
+                    //             }
+                    //         ]
+                    //     ]
+                    // }
                 }
             },
             {
@@ -37,8 +56,12 @@ module.exports = {
                 use: [
                     "style-loader",
                     "css-loader",
-                    "sass-loader"
-                ]
+                    "sass-loader",
+                ],
+            },
+            {
+                test:/\.(png|svg|jpg|gif)$/,
+                type: 'asset',
             },
         ]
     },

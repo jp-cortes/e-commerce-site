@@ -1,0 +1,37 @@
+.container-error{
+    width: 100vw;
+    height: 80vh;
+    
+    // position: relative;
+}
+.error-image-container{
+    width: 90%;
+    display: grid;
+    margin: 0 auto;
+    align-content: center;
+    height: 100%;
+    position: absolute;
+    
+
+}
+.error-image{
+    width: 100%;
+    margin: 0 auto;
+    margin-right: -3%;
+}
+//  not yet ready
+@media (max-width: 450px) {
+    .error-image{
+        width: 383px;
+        // height: 257px;
+        // margin-top: 200px;
+        margin-right: 0;
+    }
+    .error-image-container{
+        width: 90%;
+        display: grid;
+        margin: 0 auto;
+        
+    
+    }
+}

@@ -1,11 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../containers/Layout";
-import Login from "../containers/Login";
-import RecoveryPassword from '../containers/RecoveryPassword';
-import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
-import '../styles/global.css';
+import FeedProdutcs from "../containers/FeedProducts";
+import Layout from "@containers/Layout";
+import Login from "@pages/Login";
+import CreateAccount from "@pages/CreateAccount";
+import EditAccount from "@pages/EditAccount";
+import RecoveryPassword from '@pages/RecoveryPassword';
+import Home from "@pages/Home";
+import MyOrdersHistory from '@pages/MyOrdersHistory';
+import NotFound from "@pages/NotFound";
+import '@styles/global.css';
 
 const App = () => {
     return(
@@ -14,8 +18,12 @@ const App = () => {
                 <Routes>
                     <Route exact path="/" element={<Home/>}/>
                     <Route exact path="/login" element={<Login/>}/>
+                    <Route exact path="/create-account" element={<CreateAccount/>}/>
+                    <Route exact path="/my-orders-history" element={<MyOrdersHistory/>}/>
+                    <Route exact path="/edit-account" element={<EditAccount/>}/>
                     <Route exact path="/recovery-password" element={<RecoveryPassword/>}/>
-                    <Route exact path="*" element={<NotFound/>}/>
+                    <Route exact path="/products" element={<FeedProdutcs/>}/>
+                    <Route exact path="/error" element={<NotFound/>}/>
 
                 </Routes>
             </Layout>

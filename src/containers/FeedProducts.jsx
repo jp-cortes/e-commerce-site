@@ -1,129 +1,26 @@
 import React from 'react';
-import '../styles/FeedProdutcs.scss';
+import '@styles/FeedProducts.scss';
+import ProductItem from '@components/ProductItem';
+import useGetProducts from '@hooks/useGetProducts';
+
+
+const API = 'https://api.escuelajs.co/api/v1/products';
 
 const FeedProdutcs =  () => {
+const products  =  useGetProducts(API);   
+
     return(
+       <>
         <section className="main-container">
         <div className="cards-container">
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
-    
-          <div className="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""/>
-            <div className="product-info">
-              <div>
-                <p>$120,00</p>
-                <p>Bike</p>
-              </div>
-              <figure>
-                <img src="./icons/bt_add_to_cart.svg" alt=""/>
-              </figure>
-            </div>
-          </div>
+           {products.map(product => (
+               <ProductItem  product={product} key={product.id}/>
+
+           ))}
         </div>
-      </section>
+
+    </section>
+       </>
     )
     }
 
