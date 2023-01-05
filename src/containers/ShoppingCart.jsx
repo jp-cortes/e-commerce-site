@@ -1,73 +1,46 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import AppContext from "@context/AppContext";
+import ArrowIcon from '@icons/flechita.png';
+import ShoppingCartItem from "@components/ShoppingCartItem";
 import '@styles/ShoppingCart.scss';
-import CloseIcon from '@icons/icon_close.png';
-import ArrowIcon from '@icons/flechita.svg';
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ toggleOrders,setToggleOrders }) => {
+
+const { state } = useContext(AppContext);
+const sumTotal = () => {
+  const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
+  const sum = state.cart.reduce(reducer, 0);
+  return sum;
+}
+
     return (
       <>
-        <aside class="product-detail-shopping-cart">
-          <div class="title-shop-container">
-            <img src={ArrowIcon} alt="arrow" />
-            <p class="shopping-cart-title">My order</p>
+        <aside className={"product-detail-shopping-cart"}>
+          <div className="title-shop-container">
+            <img onClick={() => setToggleOrders(!toggleOrders)}
+            className={"arrow"}
+            src={ArrowIcon} 
+            alt="arrow" />
+            <p className="shopping-cart-title">My order</p>
           </div>
 
-          <div class="shopping-cart-my-order-content">
-            <div class="my-shopping-cart">
-              <figure>
-                <img
-                  src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  alt="bike"
-                />
-              </figure>
-              <p>bike</p>
-              <p>$90,00</p>
-              <img src={CloseIcon} alt="close" />
+          <div className="shopping-cart-my-order-content">
+            <div className="shopping-cart-product-container">
+
+            {state.cart.map( (product, index) => (
+              <ShoppingCartItem product={product} key={`orderItem-${index}`} indexValue={index}/> 
+            
+            ))}
             </div>
 
-            <div class="my-shopping-cart">
-              <figure>
-                <img
-                  src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  alt="bike"
-                />
-              </figure>
-              <p>bike</p>
-              <p>$90,00</p>
-              <img src={CloseIcon} alt="close" />
-            </div>
 
-            <div class="my-shopping-cart">
-              <figure>
-                <img
-                  src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  alt="bike"
-                />
-              </figure>
-              <p>bike</p>
-              <p>$90,00</p>
-              <img src={CloseIcon} alt="close" />
-            </div>
-
-            <div class="my-shopping-cart">
-              <figure>
-                <img
-                  src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  alt="bike"
-                />
-              </figure>
-              <p>bike</p>
-              <p>$90,00</p>
-              <img src={CloseIcon} alt="close" />
-            </div>
-
-            <div class="my-shopping-cart-total-order">
+            <div className="my-shopping-cart-total-order">
               <p>
                 <span>Total</span>
               </p>
-              <p>$300.00</p>
+              <p>${sumTotal()}</p>
             </div>
-            <button class="checkout-button">Checkout</button>
+            <button className="checkout-button">Checkout</button>
           </div>
         </aside>
       </>

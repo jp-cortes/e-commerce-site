@@ -9,27 +9,38 @@ import RecoveryPassword from '@pages/RecoveryPassword';
 import Home from "@pages/Home";
 import MyOrdersHistory from '@pages/MyOrdersHistory';
 import NotFound from "@pages/NotFound";
+import AppContext from "@context/AppContext.js";
+import useInitialState from "@hooks/useInitialState.js";
 import '@styles/global.css';
 
 const App = () => {
-    return(
+    const initialState = useInitialState();
+    return (
+      <AppContext.Provider value={initialState}>
         <BrowserRouter>
-            <Layout>
-                <Routes>
-                    <Route exact path="/" element={<Home/>}/>
-                    <Route exact path="/login" element={<Login/>}/>
-                    <Route exact path="/create-account" element={<CreateAccount/>}/>
-                    <Route exact path="/my-orders-history" element={<MyOrdersHistory/>}/>
-                    <Route exact path="/edit-account" element={<EditAccount/>}/>
-                    <Route exact path="/recovery-password" element={<RecoveryPassword/>}/>
-                    <Route exact path="/products" element={<FeedProdutcs/>}/>
-                    <Route exact path="/error" element={<NotFound/>}/>
-
-                </Routes>
-            </Layout>
+          <Layout>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/create-account" element={<CreateAccount />} />
+              <Route
+                exact
+                path="/my-orders-history"
+                element={<MyOrdersHistory />}
+              />
+              <Route exact path="/edit-account" element={<EditAccount />} />
+              <Route
+                exact
+                path="/recovery-password"
+                element={<RecoveryPassword />}
+              />
+              <Route exact path="/products" element={<FeedProdutcs />} />
+              <Route exact path="/*" element={<NotFound />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
-        
-    )
+      </AppContext.Provider>
+    );
 }
 
 

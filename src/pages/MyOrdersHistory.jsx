@@ -1,6 +1,6 @@
 import React from "react";
 import '@styles/MyOrdersHistory.scss';
-import ArrowIcon from '@icons/flechita.svg';
+import ArrowIcon from '@icons/flechita.png';
 
 const MyOrdersHistory = () => {
     return (
